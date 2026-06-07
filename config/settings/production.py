@@ -17,6 +17,9 @@ SECURE_BROWSER_XSS_FILTER = True
 
 CSRF_TRUSTED_ORIGINS = env("CSRF_TRUSTED_ORIGINS", default="https://cyberwithtaptue.com").split(",")
 
+if env("DATABASE_URL", default=None):
+    DATABASES = {"default": env.db()}
+
 STORAGES = {
     "staticfiles": {
         "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",
