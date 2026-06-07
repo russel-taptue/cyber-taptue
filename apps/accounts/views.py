@@ -1,3 +1,5 @@
+import logging
+
 from django.conf import settings
 from django.contrib import messages
 from django.contrib.auth import login as auth_login
@@ -14,9 +16,12 @@ from django.views.generic import CreateView, DetailView, UpdateView, View
 from .forms import CustomAuthenticationForm, CustomUserCreationForm, OTPForm, ProfileForm
 from .models import CustomUser, OTP, Profile
 
+logger = logging.getLogger(__name__)
+
 
 def _send_email(subject, context, html_template, txt_template, recipient):
     if not settings.EMAIL_HOST_USER:
+        logger.warning("EMAIL_HOST_USER not set, skipping email")
         return
     try:
         html_message = render_to_string(html_template, context)
@@ -28,11 +33,11 @@ def _send_email(subject, context, html_template, txt_template, recipient):
             from_email=settings.DEFAULT_FROM_EMAIL,
             recipient_list=[recipient],
         )
-    except Exception:
-        pass
+    except Exception as exc:
+        logger.warning("Failed to send email to %s: %s", recipient, exc)
 
 
-def _send_otp_email(user, otp_code):
+def _send_otp_email(user, otp_code, request=None):
     _send_email(
         subject=_("Your login verification code"),
         context={"username": user.username, "otp_code": otp_code},
@@ -61,8 +66,9 @@ class CustomLoginView(LoginView):
     def form_valid(self, form):
         user = form.get_user()
         otp = OTP.create_and_invalidate_old(user)
-        _send_otp_email(user, otp.code)
+        _send_otp_email(user, otp.code, request=self.request)
         self.request.session["_otp_user_id"] = user.pk
+        self.request.session["_otp_code"] = otp.code
         messages.success(
             self.request,
             _("A verification code has been sent to your email."),
@@ -82,7 +88,8 @@ class VerifyOTPView(View):
 
     def get(self, request):
         form = self.form_class()
-        return render(request, self.template_name, {"form": form})
+        otp_code = request.session.pop("_otp_code", None)
+        return render(request, self.template_name, {"form": form, "otp_code": otp_code})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -136,7 +143,8 @@ class ResendOTPView(View):
         user_id = request.session["_otp_user_id"]
         user = get_object_or_404(CustomUser, pk=user_id)
         otp = OTP.create_and_invalidate_old(user)
-        _send_otp_email(user, otp.code)
+        _send_otp_email(user, otp.code, request=request)
+        request.session["_otp_code"] = otp.code
         messages.success(request, _("A new verification code has been sent to your email."))
         return redirect("accounts:verify_otp")
 
