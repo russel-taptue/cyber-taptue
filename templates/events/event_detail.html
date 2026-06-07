@@ -1,0 +1,129 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% load markdown_extras %}
+
+{% block title %}{{ event|translated_field:"title" }} — Cyber With Taptue{% endblock title %}
+
+{% block meta_description %}{{ event|translated_field:"summary" }}{% endblock meta_description %}
+
+{% block content %}
+<article>
+    <section class="relative bg-gradient-to-br from-slate-900 via-slate-800 to-cyber-900 text-white overflow-hidden">
+        <div class="absolute inset-0 opacity-10">
+            <div class="absolute top-10 left-10 w-72 h-72 bg-cyber-500 rounded-full blur-3xl"></div>
+            <div class="absolute bottom-10 right-10 w-96 h-96 bg-purple-600 rounded-full blur-3xl"></div>
+        </div>
+        <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-24">
+            <div class="max-w-4xl">
+                <div class="flex flex-wrap items-center gap-3 mb-4">
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-cyber-500/20 text-cyber-300 text-sm font-semibold border border-cyber-500/30">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        {{ event.start_date|date:"F d, Y" }} — {{ event.end_date|date:"F d, Y" }}
+                    </span>
+                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-slate-700/50 text-slate-300 text-sm">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        {{ event|translated_field:"venue" }}
+                    </span>
+                </div>
+                <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold leading-tight">
+                    {{ event|translated_field:"title" }}
+                </h1>
+                <p class="mt-4 text-lg text-slate-300 max-w-3xl">
+                    {{ event|translated_field:"summary" }}
+                </p>
+                {% if event.patronage or event.patronage_fr %}
+                <div class="mt-8 inline-flex items-center gap-3 px-5 py-3 rounded-xl bg-white/5 border border-white/10 backdrop-blur-sm">
+                    <svg class="w-6 h-6 text-amber-400 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"/>
+                    </svg>
+                    <div>
+                        <p class="text-xs text-slate-400 font-medium uppercase tracking-wider">{% trans "Under the Patronage of" %}</p>
+                        <p class="text-sm sm:text-base font-semibold text-white">{{ event|translated_field:"patronage" }}</p>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </section>
+
+    <section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 lg:py-16">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-10">
+            <div class="lg:col-span-2">
+                <div class="prose prose-slate max-w-none prose-headings:text-slate-900 prose-headings:font-bold prose-a:text-cyber-600 prose-a:no-underline hover:prose-a:underline prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded prose-code:text-sm prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-img:rounded-xl">
+                    {{ event|translated_field:"content"|render_markdown }}
+                </div>
+            </div>
+
+            <div class="lg:col-span-1 space-y-8">
+                {% if event.youtube_video_id %}
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-4 border-b border-slate-100">
+                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-red-500" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M23.498 6.186a3.016 3.016 0 00-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 00.502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 002.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 002.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                            </svg>
+                            {% trans "Event Recording" %}
+                        </h2>
+                    </div>
+                    <div class="aspect-video bg-slate-900">
+                        <iframe
+                            src="https://www.youtube.com/embed/{{ event.youtube_video_id }}"
+                            title="{{ event|translated_field:'title' }}"
+                            class="w-full h-full"
+                            frameborder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowfullscreen
+                        ></iframe>
+                    </div>
+                </div>
+                {% endif %}
+
+                {% if event.photo_gallery %}
+                <div class="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm">
+                    <div class="p-4 border-b border-slate-100">
+                        <h2 class="text-lg font-bold text-slate-900 flex items-center gap-2">
+                            <svg class="w-5 h-5 text-slate-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            {% trans "Photo Gallery" %}
+                        </h2>
+                    </div>
+                    <div class="p-4">
+                        <div class="grid grid-cols-2 gap-3">
+                            {% for photo in event.photo_gallery %}
+                            <a href="{% static photo %}" target="_blank" rel="noopener noreferrer" class="group block aspect-[4/3] rounded-lg overflow-hidden bg-slate-100 border border-slate-200">
+                                <img src="{% static photo %}" alt="{% trans 'Event photo' %} {{ forloop.counter }}" class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" loading="lazy">
+                            </a>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="bg-gradient-to-br from-cyber-50 to-purple-50 rounded-2xl border border-cyber-100 p-6">
+                    <h3 class="font-bold text-slate-900">{% trans "Event Details" %}</h3>
+                    <dl class="mt-4 space-y-3 text-sm">
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">{% trans "Start Date" %}</dt>
+                            <dd class="font-medium text-slate-900">{{ event.start_date|date:"F d, Y" }}</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">{% trans "End Date" %}</dt>
+                            <dd class="font-medium text-slate-900">{{ event.end_date|date:"F d, Y" }}</dd>
+                        </div>
+                        <div class="flex justify-between">
+                            <dt class="text-slate-500">{% trans "Venue" %}</dt>
+                            <dd class="font-medium text-slate-900 text-right">{{ event|translated_field:"venue" }}</dd>
+                        </div>
+                    </dl>
+                </div>
+            </div>
+        </div>
+    </section>
+</article>
+{% endblock content %}

@@ -1,0 +1,124 @@
+{% load i18n static %}
+{% get_current_language as LANGUAGE_CODE %}
+{% get_available_languages as LANGUAGES %}
+<header class="bg-slate-900 border-b border-slate-800 sticky top-0 z-50">
+    <nav class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" aria-label="{% trans 'Main navigation' %}">
+        <div class="flex items-center justify-between h-16 lg:h-20">
+            <div class="flex-shrink-0">
+                <a href="{% url 'core:home' %}" class="flex items-center space-x-2 group">
+                    <img src="{% static 'images/branding/logo.png' %}"
+                         alt="Cyber With Taptue"
+                         width="160"
+                         height="40"
+                         class="h-8 w-auto sm:h-10 object-contain">
+                </a>
+            </div>
+
+            <div class="hidden lg:flex lg:items-center lg:space-x-1">
+                <a href="{% url 'core:home' %}" class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                    {% trans "Home" %}
+                </a>
+                <a href="{% url 'blog:article_list' %}" class="nav-link {% if request.resolver_match.app_name == 'blog' %}active{% endif %}">
+                    {% trans "Blog" %}
+                </a>
+                <a href="{% url 'core:about' %}" class="nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                    {% trans "About Us" %}
+                </a>
+                <a href="{% url 'projects:project_list' %}" class="nav-link {% if request.resolver_match.app_name == 'projects' %}active{% endif %}">
+                    {% trans "Projects" %}
+                </a>
+                <a href="{% url 'meet_legends:legend_list' %}" class="nav-link {% if request.resolver_match.url_name == 'legend_list' %}active{% endif %}">
+                    {% trans "Meet The Legends" %}
+                </a>
+                <a href="{% url 'events:event_list' %}" class="nav-link {% if request.resolver_match.app_name == 'events' %}active{% endif %}">
+                    {% trans "Events" %}
+                </a>
+                <a href="{% url 'contact:contact' %}" class="nav-link {% if request.resolver_match.app_name == 'contact' %}active{% endif %}">
+                    {% trans "Contact" %}
+                </a>
+            </div>
+
+            <div class="flex items-center space-x-3">
+                {% include "components/language_switcher.html" %}
+
+                <div class="hidden sm:flex items-center space-x-3">
+                    <a href="{% url 'search:search' %}" class="p-2 text-slate-300 hover:text-cyber-400 transition-colors" aria-label="{% trans 'Search' %}">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                        </svg>
+                    </a>
+                    {% if user.is_authenticated %}
+                    <div class="flex items-center space-x-3">
+                        <span class="text-sm text-slate-300">
+                            <a href="{% url 'accounts:profile_detail' username=user.username %}" class="hover:text-cyber-400 transition-colors">{{ user.username }}</a>
+                        </span>
+                        <a href="{% url 'blog:bookmark_list' %}" class="text-sm text-slate-400 hover:text-cyber-400 transition-colors" aria-label="{% trans 'My Bookmarks' %}">
+                            <svg class="w-4 h-4 fill-none stroke-current" viewBox="0 0 24 24" stroke-width="2">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+                            </svg>
+                        </a>
+                        <form method="post" action="{% url 'accounts:logout' %}">
+                            {% csrf_token %}
+                            <button type="submit" class="text-sm font-medium text-cyber-400 hover:text-cyber-300 transition-colors">
+                                {% trans "Log Out" %}
+                            </button>
+                        </form>
+                    </div>
+                    {% else %}
+                    <a href="{% url 'accounts:login' %}" class="text-sm font-medium text-cyber-400 hover:text-cyber-300 transition-colors">
+                        {% trans "Log In" %}
+                    </a>
+                    <a href="{% url 'accounts:register' %}" class="text-sm font-semibold px-4 py-2 rounded-lg bg-cyber-500 text-white hover:bg-cyber-400 transition-colors shadow-lg shadow-cyber-500/20">
+                        {% trans "Sign Up" %}
+                    </a>
+                    {% endif %}
+                </div>
+
+                <button id="mobile-menu-button" class="lg:hidden p-2 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition-colors" aria-label="{% trans 'Toggle navigation menu' %}" aria-expanded="false">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                    </svg>
+                </button>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="hidden lg:hidden border-t border-slate-800 py-3 space-y-1">
+            <a href="{% url 'core:home' %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                {% trans "Home" %}
+            </a>
+            <a href="{% url 'blog:article_list' %}" class="mobile-nav-link {% if request.resolver_match.app_name == 'blog' %}active{% endif %}">
+                {% trans "Blog" %}
+            </a>
+            <a href="{% url 'core:about' %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'about' %}active{% endif %}">
+                {% trans "About Us" %}
+            </a>
+            <a href="{% url 'projects:project_list' %}" class="mobile-nav-link {% if request.resolver_match.app_name == 'projects' %}active{% endif %}">
+                {% trans "Projects" %}
+            </a>
+            <a href="{% url 'meet_legends:legend_list' %}" class="mobile-nav-link {% if request.resolver_match.url_name == 'legend_list' %}active{% endif %}">
+                {% trans "Meet The Legends" %}
+            </a>
+            <a href="{% url 'events:event_list' %}" class="mobile-nav-link {% if request.resolver_match.app_name == 'events' %}active{% endif %}">
+                {% trans "Events" %}
+            </a>
+            <a href="{% url 'contact:contact' %}" class="mobile-nav-link {% if request.resolver_match.app_name == 'contact' %}active{% endif %}">
+                {% trans "Contact" %}
+            </a>
+            <a href="{% url 'search:search' %}" class="mobile-nav-link {% if request.resolver_match.app_name == 'search' %}active{% endif %}">
+                {% trans "Search" %}
+            </a>
+            <hr class="border-slate-800 my-2">
+            {% if user.is_authenticated %}
+            <div class="px-3 py-2 text-sm text-slate-400">{{ user.username }}</div>
+            <a href="{% url 'accounts:profile_detail' username=user.username %}" class="mobile-nav-link">{% trans "Profile" %}</a>
+            <form method="post" action="{% url 'accounts:logout' %}" class="px-3">
+                {% csrf_token %}
+                <button type="submit" class="mobile-nav-link w-full text-left">{% trans "Log Out" %}</button>
+            </form>
+            {% else %}
+            <a href="{% url 'accounts:login' %}" class="mobile-nav-link">{% trans "Log In" %}</a>
+            <a href="{% url 'accounts:register' %}" class="mobile-nav-link text-cyber-400 font-semibold">{% trans "Sign Up" %}</a>
+            {% endif %}
+        </div>
+    </nav>
+</header>

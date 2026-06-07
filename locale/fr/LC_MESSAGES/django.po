@@ -1,0 +1,822 @@
+# French translations for Cyber With Taptue.
+# Copyright (C) 2026 Cyber With Taptue
+# This file is distributed under the same license as the Django project.
+# Taptue Russel <taptuerussel@gmail.com>, 2026.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Cyber With Taptue 1.0\n"
+"Report-Msgid-Bugs-To: taptuerussel@gmail.com\n"
+"POT-Creation-Date: 2026-06-03 22:00+0000\n"
+"PO-Revision-Date: 2026-06-03 22:00+0000\n"
+"Last-Translator: Taptue Russel <taptuerussel@gmail.com>\n"
+"Language-Team: French <taptuerussel@gmail.com>\n"
+"Language: fr\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+
+msgid "About Us"
+msgstr "À propos"
+
+msgid "About Us — Cyber With Taptue"
+msgstr "À propos — Cyber With Taptue"
+
+msgid "Account created successfully. You can now log in."
+msgstr "Compte créé avec succès. Vous pouvez maintenant vous connecter."
+
+msgid "Advanced"
+msgstr "Avancé"
+
+msgid "All articles and labs available in both English and French."
+msgstr "Tous les articles et laboratoires disponibles en anglais et en français."
+
+msgid "All Categories"
+msgstr "Toutes les catégories"
+
+msgid "All Domains"
+msgstr "Tous les domaines"
+
+msgid "All rights reserved."
+msgstr "Tous droits réservés."
+
+msgid "Already have an account?"
+msgstr "Vous avez déjà un compte ?"
+
+msgid "Approve selected comments"
+msgstr "Approuver les commentaires sélectionnés"
+
+msgid "Array of image paths"
+msgstr "Tableau des chemins d'images"
+
+msgid "article"
+msgstr "article"
+
+msgid "Article"
+msgstr "Article"
+
+msgid "Articles"
+msgstr "Articles"
+
+msgid "author"
+msgstr "auteur"
+
+msgid "Beginner"
+msgstr "Débutant"
+
+msgid "Bilingual"
+msgstr "Bilingue"
+
+msgid "Bilingual Content:"
+msgstr "Contenu bilingue :"
+
+msgid "Blog"
+msgstr "Blog"
+
+msgid "Blog — Cyber With Taptue"
+msgstr "Blog — Cyber With Taptue"
+
+msgid "Bridge the gap between academic cybersecurity and real-world practice."
+msgstr "Combler le fossé entre la cybersécurité académique et la pratique réelle."
+
+msgid "Browse Articles"
+msgstr "Parcourir les articles"
+
+msgid "Build a community of security professionals who learn, share, and grow together."
+msgstr "Bâtir une communauté de professionnels de la sécurité qui apprennent, partagent et grandissent ensemble."
+
+msgid "Categories"
+msgstr "Catégories"
+
+msgid "category"
+msgstr "catégorie"
+
+msgid "Category"
+msgstr "Catégorie"
+
+msgid "CCMC | IT Professional"
+msgstr "CCMC | Professionnel IT"
+
+msgid "Check back soon for upcoming cybersecurity events."
+msgstr "Revenez bientôt pour les prochains événements cybersécurité."
+
+msgid "Choose a username"
+msgstr "Choisissez un nom d'utilisateur"
+
+msgid "Comment"
+msgstr "Commentaire"
+
+msgid "Comments"
+msgstr "Commentaires"
+
+msgid "Community"
+msgstr "Communauté"
+
+msgid "Community-Driven:"
+msgstr "Piloté par la communauté :"
+
+msgid "Comma-separated list of skills"
+msgstr "Liste de compétences séparées par des virgules"
+
+msgid "Confirm password"
+msgstr "Confirmer le mot de passe"
+
+msgid "Connect"
+msgstr "Réseaux"
+
+msgid "Connect on LinkedIn"
+msgstr "Se connecter sur LinkedIn"
+
+msgid "Connect with Taptue Russel for cybersecurity insights, consulting, and professional networking."
+msgstr "Connectez-vous avec Taptue Russel pour des conseils en cybersécurité, du consulting et du réseautage professionnel."
+
+msgid "Contact"
+msgstr "Contact"
+
+msgid "Contact & Services"
+msgstr "Contact & Services"
+
+msgid "Contact & Services — Cyber With Taptue"
+msgstr "Contact & Services — Cyber With Taptue"
+
+msgid "content"
+msgstr "contenu"
+
+msgid "content (French, Markdown)"
+msgstr "contenu (français, Markdown)"
+
+msgid "content (Markdown)"
+msgstr "contenu (Markdown)"
+
+msgid "Content"
+msgstr "Contenu"
+
+msgid "Create a strong password"
+msgstr "Créez un mot de passe fort"
+
+msgid "Create Account"
+msgstr "Créer un compte"
+
+msgid "Create your account and start learning"
+msgstr "Créez votre compte et commencez à apprendre"
+
+msgid "Cyber With Taptue was founded by Taptue Russel, a seasoned IT professional and cybersecurity consultant with a passion for education and open-source technology. With years of hands-on experience in security operations, digital forensics, cloud security, and DevSecOps, Russel recognized a critical gap in the cybersecurity training landscape."
+msgstr "Cyber With Taptue a été fondé par Taptue Russel, un professionnel IT chevronné et consultant en cybersécurité passionné par l'éducation et les technologies open-source. Fort de plusieurs années d'expérience pratique en opérations de sécurité, criminalistique numérique, sécurité cloud et DevSecOps, Russel a identifié une lacune critique dans le paysage de la formation en cybersécurité."
+
+msgid "Cyber With Taptue — Learn, Protect, Share"
+msgstr "Cyber With Taptue — Apprendre, Protéger, Partager"
+
+msgid "Cybersecurity"
+msgstr "Cybersécurité"
+
+msgid "date subscribed"
+msgstr "date d'inscription"
+
+msgid "description"
+msgstr "description"
+
+msgid "description (French)"
+msgstr "description (français)"
+
+msgid "difficulty"
+msgstr "difficulté"
+
+msgid "Discussion"
+msgstr "Discussion"
+
+msgid "Don't have an account?"
+msgstr "Pas encore de compte ?"
+
+msgid "email"
+msgstr "e-mail"
+
+msgid "Email"
+msgstr "E-mail"
+
+msgid "Email address"
+msgstr "Adresse e-mail"
+
+msgid "Email Address"
+msgstr "Adresse e-mail"
+
+msgid "Empowering the next generation of cybersecurity professionals through hands-on labs, real-world projects, and a community-driven learning platform."
+msgstr "Autonomiser la prochaine génération de professionnels de la cybersécurité grâce à des laboratoires pratiques, des projets concrets et une plateforme d'apprentissage pilotée par la communauté."
+
+msgid "EN & FR — learning without borders."
+msgstr "EN & FR — apprendre sans frontières."
+
+msgid "EN career-pivot / milestone story"
+msgstr "Récit de carrière / étape clé (EN)"
+
+msgid "EN portfolio title"
+msgstr "Titre du portfolio (EN)"
+
+msgid "end date"
+msgstr "date de fin"
+
+msgid "End Date"
+msgstr "Date de fin"
+
+msgid "Enter your password"
+msgstr "Entrez votre mot de passe"
+
+msgid "Event"
+msgstr "Événement"
+
+msgid "Event Details"
+msgstr "Détails de l'événement"
+
+msgid "Event photo"
+msgstr "Photo de l'événement"
+
+msgid "Event Recording"
+msgstr "Enregistrement de l'événement"
+
+msgid "Events"
+msgstr "Événements"
+
+msgid "Events — Cyber With Taptue"
+msgstr "Événements — Cyber With Taptue"
+
+msgid "excerpt"
+msgstr "extrait"
+
+msgid "excerpt (French)"
+msgstr "extrait (français)"
+
+msgid "expert name"
+msgstr "nom de l'expert"
+
+msgid "Explore Articles"
+msgstr "Explorer les articles"
+
+msgid "Explore our hands-on labs, read our articles, and join a community of passionate security professionals."
+msgstr "Explorez nos laboratoires pratiques, lisez nos articles et rejoignez une communauté de professionnels de la sécurité passionnés."
+
+msgid "Featured episodes are being prepared. Check back soon."
+msgstr "Des épisodes vedettes sont en préparation. Revenez bientôt."
+
+msgid "featured image"
+msgstr "image à la une"
+
+msgid "Follow on GitHub"
+msgstr "Suivre sur GitHub"
+
+msgid "Follow our repositories (russel-taptue) for open-source labs, technical documentation, and server hardening scripts."
+msgstr "Suivez nos dépôts (russel-taptue) pour des laboratoires open-source, de la documentation technique et des scripts de durcissement de serveurs."
+
+msgid "Founder & Cybersecurity Consultant"
+msgstr "Fondateur & Consultant en cybersécurité"
+
+msgid "FR career-pivot / milestone story"
+msgstr "Récit de carrière / étape clé (FR)"
+
+msgid "FR portfolio title"
+msgstr "Titre du portfolio (FR)"
+
+msgid "Free and transparent, always."
+msgstr "Gratuit et transparent, toujours."
+
+msgid "Full event recap in Markdown"
+msgstr "Compte-rendu complet de l'événement en Markdown"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "GitHub URL"
+msgstr "URL GitHub"
+
+msgid "Hands-On Labs"
+msgstr "Laboratoires pratiques"
+
+msgid "Hands-On Labs:"
+msgstr "Laboratoires pratiques :"
+
+msgid "headline"
+msgstr "titre"
+
+msgid "headline (French)"
+msgstr "titre (français)"
+
+msgid "Home"
+msgstr "Accueil"
+
+msgid "icon"
+msgstr "icône"
+
+msgid "Important dates"
+msgstr "Dates importantes"
+
+msgid "Intermediate"
+msgstr "Intermédiaire"
+
+msgid "is active"
+msgstr "est actif"
+
+msgid "is approved"
+msgstr "est approuvé"
+
+msgid "is published"
+msgstr "est publié"
+
+msgid "Join the Community"
+msgstr "Rejoindre la communauté"
+
+msgid "Join the conversation —"
+msgstr "Participez à la conversation —"
+
+msgid "Learn together, grow together."
+msgstr "Apprendre ensemble, grandir ensemble."
+
+msgid "Leave a comment"
+msgstr "Laisser un commentaire"
+
+msgid "Legend"
+msgstr "Légende"
+
+msgid "Legends"
+msgstr "Légendes"
+
+msgid "Links & Media"
+msgstr "Liens & Médias"
+
+msgid "log in"
+msgstr "connecter"
+
+msgid "Log In"
+msgstr "Connexion"
+
+msgid "Log In — Cyber With Taptue"
+msgstr "Connexion — Cyber With Taptue"
+
+msgid "Log in to your account to continue"
+msgstr "Connectez-vous à votre compte pour continuer"
+
+msgid "Log Out"
+msgstr "Déconnexion"
+
+msgid "Main navigation"
+msgstr "Navigation principale"
+
+msgid "Making cybersecurity accessible to everyone."
+msgstr "Rendre la cybersécurité accessible à tous."
+
+msgid "Making cybersecurity accessible to everyone by simplifying complex technical concepts and sharing practical knowledge to protect our digital lives."
+msgstr "Rendre la cybersécurité accessible à tous en simplifiant les concepts techniques complexes et en partageant des connaissances pratiques pour protéger nos vies numériques."
+
+msgid "Making cybersecurity accessible to everyone. Learn, protect, and share."
+msgstr "Rendre la cybersécurité accessible à tous. Apprendre, protéger et partager."
+
+msgid "Media"
+msgstr "Médias"
+
+msgid "Meet The Legends"
+msgstr "Meet The Legends"
+
+msgid "Meet The Legends — Cyber With Taptue"
+msgstr "Meet The Legends — Cyber With Taptue"
+
+msgid "Meet the Legends"
+msgstr "Meet the Legends"
+
+msgid "min read"
+msgstr "min de lecture"
+
+msgid "Most cybersecurity resources are either too theoretical to be useful in real-world scenarios or locked behind expensive paywalls. Cyber With Taptue bridges this gap by providing practical, hands-on labs and projects that are completely free and open-source."
+msgstr "La plupart des ressources en cybersécurité sont soit trop théoriques pour être utiles dans des scénarios réels, soit verrouillées derrière des paywalls coûteux. Cyber With Taptue comble cette lacune en proposant des laboratoires et projets pratiques, entièrement gratuits et open-source."
+
+msgid "name"
+msgstr "nom"
+
+msgid "name (French)"
+msgstr "nom (français)"
+
+msgid "narrative"
+msgstr "récit"
+
+msgid "narrative (French)"
+msgstr "récit (français)"
+
+msgid "Newsletter"
+msgstr "Newsletter"
+
+msgid "Newsletter subscriber"
+msgstr "Abonné à la newsletter"
+
+msgid "Newsletter subscribers"
+msgstr "Abonnés à la newsletter"
+
+msgid "Next"
+msgstr "Suivant"
+
+msgid "No articles found."
+msgstr "Aucun article trouvé."
+
+msgid "No comments yet. Be the first to share your thoughts!"
+msgstr "Aucun commentaire pour l'instant. Soyez le premier à partager votre avis !"
+
+msgid "No events yet"
+msgstr "Aucun événement pour l'instant"
+
+msgid "No legends yet"
+msgstr "Aucune légende pour l'instant"
+
+msgid "No projects found."
+msgstr "Aucun projet trouvé."
+
+msgid "No spam — only cybersecurity insights, labs, and community updates."
+msgstr "Pas de spam — seulement des connaissances en cybersécurité, des laboratoires et des actualités de la communauté."
+
+msgid "Official patronage / auspices"
+msgstr "Patronage officiel"
+
+msgid "Open Source"
+msgstr "Open Source"
+
+msgid "Open-source content that anyone can contribute to and improve."
+msgstr "Du contenu open-source auquel tout le monde peut contribuer et améliorer."
+
+msgid "or"
+msgstr "ou"
+
+msgid "order"
+msgstr "ordre"
+
+msgid "Our Ecosystem"
+msgstr "Notre écosystème"
+
+msgid "Our Mission"
+msgstr "Notre mission"
+
+msgid "Password"
+msgstr "Mot de passe"
+
+msgid "Past and upcoming cybersecurity events, summits, and community gatherings."
+msgstr "Événements passés et à venir en cybersécurité, sommets et rassemblements communautaires."
+
+msgid "patronage"
+msgstr "patronage"
+
+msgid "patronage (French)"
+msgstr "patronage (français)"
+
+msgid "Permissions"
+msgstr "Permissions"
+
+msgid "Personal info"
+msgstr "Informations personnelles"
+
+msgid "photo gallery"
+msgstr "galerie photos"
+
+msgid "Photo Gallery"
+msgstr "Galerie photos"
+
+msgid "Post Comment"
+msgstr "Publier le commentaire"
+
+msgid "Practical hands-on labs and challenges."
+msgstr "Des laboratoires pratiques et des défis concrets."
+
+msgid "Previous"
+msgstr "Précédent"
+
+msgid "Project / Lab"
+msgstr "Projet / Laboratoire"
+
+msgid "Project Labs:"
+msgstr "Projets pratiques :"
+
+msgid "Projects"
+msgstr "Projets"
+
+msgid "Projects & Labs"
+msgstr "Projets & Laboratoires"
+
+msgid "Projects / Labs"
+msgstr "Projets / Laboratoires"
+
+msgid "Projects — Cyber With Taptue"
+msgstr "Projets — Cyber With Taptue"
+
+msgid "Promote open-source tools and methodologies for enterprise security."
+msgstr "Promouvoir les outils et méthodologies open-source pour la sécurité en entreprise."
+
+msgid "Provide high-quality, practical cybersecurity education at zero cost."
+msgstr "Fournir une éducation en cybersécurité de haute qualité, pratique et gratuite."
+
+msgid "Publication"
+msgstr "Publication"
+
+msgid "published at"
+msgstr "publié le"
+
+msgid "Quick Links"
+msgstr "Liens rapides"
+
+msgid "reading time (minutes)"
+msgstr "temps de lecture (minutes)"
+
+msgid "Ready to Start Your Cybersecurity Journey?"
+msgstr "Prêt à commencer votre voyage en cybersécurité ?"
+
+msgid "Real career pivots, hard-won mindsets, and the workflows that shape cybersecurity professionals."
+msgstr "Des reconversions professionnelles réelles, des mentalités durement acquises et les flux de travail qui façonnent les professionnels de la cybersécurité."
+
+msgid "Real environments, real tools, real skills."
+msgstr "Des environnements réels, des outils réels, des compétences réelles."
+
+msgid "Real-world projects with production-grade configurations, all available on GitHub."
+msgstr "Des projets concrets avec des configurations de niveau production, tous disponibles sur GitHub."
+
+msgid "Repeat your password"
+msgstr "Répétez votre mot de passe"
+
+msgid "Share your thoughts..."
+msgstr "Partagez vos idées..."
+
+msgid "sign up"
+msgstr "inscrire"
+
+msgid "Sign Up"
+msgstr "Inscription"
+
+msgid "Sign Up — Cyber With Taptue"
+msgstr "Inscription — Cyber With Taptue"
+
+msgid "Simplified"
+msgstr "Simplifié"
+
+msgid "skills acquired"
+msgstr "compétences acquises"
+
+msgid "skills acquired (French)"
+msgstr "compétences acquises (français)"
+
+msgid "Skills You Will Acquire"
+msgstr "Compétences que vous acquerrez"
+
+msgid "slug"
+msgstr "slug"
+
+msgid "start date"
+msgstr "date de début"
+
+msgid "Start Date"
+msgstr "Date de début"
+
+msgid "Stay informed with the latest content."
+msgstr "Restez informé des derniers contenus."
+
+msgid "Step-by-step guides for building SIEM labs, conducting forensic investigations, and more."
+msgstr "Des guides étape par étape pour construire des laboratoires SIEM, mener des enquêtes forensiques, et plus encore."
+
+msgid "Subscribe"
+msgstr "S'abonner"
+
+msgid "Subscribe now"
+msgstr "S'abonner maintenant"
+
+msgid "Subscribe to Cyber With Taptue for practical labs, tutorials, and the Meet the Legends podcast."
+msgstr "Abonnez-vous à Cyber With Taptue pour des laboratoires pratiques, des tutoriels et le podcast Meet the Legends."
+
+msgid "Subscribe to our newsletter, connect with our community, and explore our open-source ecosystem."
+msgstr "Abonnez-vous à notre newsletter, connectez-vous avec notre communauté et explorez notre écosystème open-source."
+
+msgid "summary"
+msgstr "résumé"
+
+msgid "summary (French)"
+msgstr "résumé (français)"
+
+msgid "Tailwind icon or emoji"
+msgstr "Icône Tailwind ou emoji"
+
+msgid "Taptue Russel"
+msgstr "Taptue Russel"
+
+msgid "Technical articles and tutorials on cybersecurity."
+msgstr "Articles techniques et tutoriels sur la cybersécurité."
+
+msgid "Thank you for subscribing!"
+msgstr "Merci de vous être abonné !"
+
+msgid "The Story Behind Cyber With Taptue"
+msgstr "L'histoire derrière Cyber With Taptue"
+
+msgid "This account is inactive."
+msgstr "Ce compte est inactif."
+
+msgid "This email is already subscribed."
+msgstr "Cet e-mail est déjà abonné."
+
+msgid "title"
+msgstr "titre"
+
+msgid "title (French)"
+msgstr "titre (français)"
+
+msgid "to leave a comment."
+msgstr "pour laisser un commentaire."
+
+msgid "Toggle navigation menu"
+msgstr "Menu de navigation"
+
+msgid "Try Labs"
+msgstr "Essayer les laboratoires"
+
+msgid "Try selecting a different category."
+msgstr "Essayez de sélectionner une autre catégorie."
+
+msgid "Try selecting a different domain."
+msgstr "Essayez de sélectionner un autre domaine."
+
+msgid "Under the Patronage of"
+msgstr "Sous le patronage de"
+
+msgid "User"
+msgstr "Utilisateur"
+
+msgid "Username"
+msgstr "Nom d'utilisateur"
+
+msgid "Users"
+msgstr "Utilisateurs"
+
+msgid "Valid channel stream key"
+msgstr "Clé de streaming de chaîne valide"
+
+msgid "Venue"
+msgstr "Lieu"
+
+msgid "venue"
+msgstr "lieu"
+
+msgid "venue (French)"
+msgstr "lieu (français)"
+
+msgid "Video Walkthrough"
+msgstr "Démonstration vidéo"
+
+msgid "View on GitHub"
+msgstr "Voir sur GitHub"
+
+msgid "View Projects"
+msgstr "Voir les projets"
+
+msgid "Watch the Tutorial"
+msgstr "Regarder le tutoriel"
+
+msgid "Welcome Back"
+msgstr "Bon retour"
+
+msgid "What We Offer"
+msgstr "Ce que nous proposons"
+
+msgid "you@example.com"
+msgstr "vous@exemple.com"
+
+msgid "your@email.com"
+msgstr "votre@email.com"
+
+msgid "Your comment"
+msgstr "Votre commentaire"
+
+msgid "YouTube"
+msgstr "YouTube"
+
+msgid "YouTube video ID"
+msgstr "ID de la vidéo YouTube"
+
+msgid "You are now part of the Cyber With Taptue community."
+msgstr "Vous faites désormais partie de la communauté Cyber With Taptue."
+
+msgid "Search"
+msgstr "Rechercher"
+
+msgid "Find articles, tutorials, and projects."
+msgstr "Trouvez des articles, tutoriels et projets."
+
+msgid "Search the platform..."
+msgstr "Rechercher sur la plateforme..."
+
+msgid "No results found."
+msgstr "Aucun résultat trouvé."
+
+msgid "Try different keywords or browse the site."
+msgstr "Essayez d'autres mots-clés ou parcourez le site."
+
+msgid "Enter a search term above."
+msgstr "Entrez un terme de recherche ci-dessus."
+
+msgid "Articles"
+msgstr "Articles"
+
+msgid "Projects / Labs"
+msgstr "Projets / Laboratoires"
+
+msgid "result found"
+msgid_plural "results found"
+msgstr[0] "résultat trouvé"
+msgstr[1] "résultats trouvés"
+
+msgid "Profile"
+msgstr "Profil"
+
+msgid "Profiles"
+msgstr "Profils"
+
+msgid "bio"
+msgstr "Biographie"
+
+msgid "GitHub"
+msgstr "GitHub"
+
+msgid "LinkedIn"
+msgstr "LinkedIn"
+
+msgid "Twitter"
+msgstr "Twitter"
+
+msgid "Edit Profile"
+msgstr "Modifier le profil"
+
+msgid "Update your public profile information."
+msgstr "Mettez à jour les informations de votre profil public."
+
+msgid "Save Changes"
+msgstr "Enregistrer"
+
+msgid "Cancel"
+msgstr "Annuler"
+
+msgid "Tell us about yourself..."
+msgstr "Parlez-nous de vous..."
+
+msgid "Profile updated successfully."
+msgstr "Profil mis à jour avec succès."
+
+msgid "contributions"
+msgstr "contributions"
+
+msgid "Projects"
+msgstr "Projets"
+
+msgid "Website"
+msgstr "Site Web"
+
+msgid "Related Articles"
+msgstr "Articles connexes"
+
+msgid "My Bookmarks"
+msgstr "Mes favoris"
+
+msgid "Articles you have saved for later."
+msgstr "Articles que vous avez sauvegardés pour plus tard."
+
+msgid "No bookmarks yet."
+msgstr "Pas encore de favoris."
+
+msgid "Browse articles"
+msgstr "Parcourir les articles"
+
+msgid "and save them for later."
+msgstr "et sauvegardez-les pour plus tard."
+
+msgid "Bookmark"
+msgstr "Favori"
+
+msgid "Bookmarked"
+msgstr "Favori"
+
+msgid "parent comment"
+msgstr "Commentaire parent"
+
+msgid "Share"
+msgstr "Partager"
+
+msgid "Share on Twitter"
+msgstr "Partager sur Twitter"
+
+msgid "Share on LinkedIn"
+msgstr "Partager sur LinkedIn"
+
+msgid "Share on Facebook"
+msgstr "Partager sur Facebook"
+
+msgid "Copy link"
+msgstr "Copier le lien"
+
+msgid "Copied!"
+msgstr "Copié !"
+
+msgid "Reply"
+msgstr "Répondre"
+
+msgid "Write a reply..."
+msgstr "Écrire une réponse..."
+
+msgid "All Levels"
+msgstr "Tous les niveaux"

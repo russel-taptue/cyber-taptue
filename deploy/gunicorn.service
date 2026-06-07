@@ -1,0 +1,24 @@
+[Unit]
+Description=cyberwithtaptue gunicorn daemon
+After=network.target postgresql.service
+
+[Service]
+User=www-data
+Group=www-data
+WorkingDirectory=/var/www/cyberwithtaptue
+RuntimeDirectory=gunicorn
+
+Environment=DJANGO_ENVIRONMENT=production
+EnvironmentFile=/var/www/cyberwithtaptue/.env
+
+ExecStart=/var/www/cyberwithtaptue/venv/bin/gunicorn \
+    --config /var/www/cyberwithtaptue/deploy/gunicorn.conf.py \
+    config.wsgi:application
+
+ExecReload=/bin/kill -s HUP $MAINPID
+KillMode=mixed
+TimeoutStopSec=5
+PrivateTmp=true
+
+[Install]
+WantedBy=multi-user.target

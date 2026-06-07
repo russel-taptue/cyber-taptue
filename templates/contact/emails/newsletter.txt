@@ -1,0 +1,18 @@
+{% load i18n %}{% autoescape off %}
+{{ subject }}
+
+
+{% trans "Hi there," %}
+
+{{ body }}
+
+
+{% trans "Visit us" %}: {{ protocol }}://{{ domain }}
+
+---
+
+{% trans "To unsubscribe from these emails, click here:" %}
+{{ unsubscribe_url }}
+
+© Cyber With Taptue, {{ year }}
+{% endautoescape %}

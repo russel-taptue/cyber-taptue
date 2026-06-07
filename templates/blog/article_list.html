@@ -1,0 +1,72 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% load markdown_extras %}
+
+{% block title %}{% trans "Blog — Cyber With Taptue" %}{% endblock title %}
+{% block meta_description %}{% trans "Technical articles and tutorials on cybersecurity. Learn about cloud security, network forensics, web security, OSINT, and more." %}{% endblock meta_description %}
+
+{% block content %}
+<!-- Hero -->
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <div class="text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cyan-300 text-sm font-semibold backdrop-blur-sm border border-white/10 mb-4">
+                {% trans "Our Blog" %}
+            </span>
+            <h1 class="text-4xl sm:text-5xl font-extrabold text-white leading-tight">
+                {% trans "Cybersecurity Articles" %}
+            </h1>
+            <p class="mt-4 text-lg text-blue-200 max-w-2xl mx-auto">
+                {% trans "In-depth tutorials, hands-on guides, and insights from the front lines of cybersecurity." %}
+            </p>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-12 bg-gradient-to-t from-white to-transparent"></div>
+</section>
+
+<!-- Filter Bar -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 relative z-10">
+    <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-4 sm:p-6">
+        <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 bg-cyber-50 rounded-xl flex items-center justify-center">
+                    <svg class="w-5 h-5 text-cyber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z"/></svg>
+                </div>
+                <span class="text-sm font-semibold text-slate-700">{% trans "Filter by Domain" %}</span>
+            </div>
+            <select
+                name="domain"
+                hx-get="{% url 'blog:article_list' %}"
+                hx-trigger="change"
+                hx-target="#article-grid-container"
+                hx-swap="innerHTML"
+                hx-indicator="#loading-indicator"
+                class="appearance-none bg-slate-50 border border-slate-200 text-slate-700 rounded-xl px-5 py-3 pr-12 text-sm font-medium focus:ring-2 focus:ring-cyber-500/30 focus:border-cyber-500 outline-none transition-colors cursor-pointer w-full sm:w-auto"
+            >
+                <option value="" {% if not current_domain %}selected{% endif %}>{% trans "All Domains" %}</option>
+                {% for cat in categories %}
+                <option value="{{ cat.slug }}" {% if current_domain == cat.slug %}selected{% endif %}>
+                    {{ cat.name }}
+                </option>
+                {% endfor %}
+            </select>
+        </div>
+    </div>
+</section>
+
+<!-- Loading Indicator -->
+<div id="loading-indicator" class="htmx-indicator text-center py-8 hidden">
+    <div class="inline-flex items-center gap-3 px-6 py-3 bg-white rounded-xl shadow-lg border border-slate-100">
+        <div class="w-5 h-5 border-2 border-cyber-500 border-t-transparent rounded-full animate-spin"></div>
+        <span class="text-sm font-medium text-slate-600">{% trans "Loading articles..." %}</span>
+    </div>
+</div>
+
+<!-- Article Grid -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div id="article-grid-container">
+        {% include "blog/includes/article_grid.html" with articles=page_obj.object_list %}
+    </div>
+</section>
+{% endblock content %}

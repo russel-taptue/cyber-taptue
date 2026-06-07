@@ -1,0 +1,249 @@
+{% extends "base.html" %}
+{% load i18n static %}
+
+{% block title %}{% trans "About Us — Cyber With Taptue" %}{% endblock title %}
+
+{% block content %}
+
+{% trans "Empowering the next generation of cybersecurity professionals through hands-on labs, real-world projects, and a community-driven learning platform." as hero_subtitle %}
+{% trans "About Us" as page_title %}
+{% trans "Taptue Russel" as founder_name %}
+{% trans "Founder & Cybersecurity Consultant" as founder_role %}
+{% trans "The Story Behind Cyber With Taptue" as story_title %}
+{% trans "Our Mission" as mission_title %}
+{% trans "Our Values" as values_title %}
+{% trans "Ready to Start Your Cybersecurity Journey?" as cta_title %}
+{% trans "Explore our hands-on labs, read our articles, and join a community of passionate security professionals." as cta_subtitle %}
+{% trans "Browse Articles" as cta_blog %}
+{% trans "View Projects" as cta_projects %}
+{% trans "Years of Experience" as stat_exp %}
+{% trans "Free Labs" as stat_labs %}
+{% trans "Articles" as stat_articles %}
+{% trans "Students" as stat_students %}
+
+<!-- Hero -->
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')] opacity-40"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 lg:py-32">
+        <div class="text-center">
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 text-cyan-300 text-sm font-semibold backdrop-blur-sm border border-white/10 mb-6">
+                {% trans "Who We Are" %}
+            </span>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white leading-tight">
+                {{ page_title }}
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-blue-200 max-w-3xl mx-auto leading-relaxed">
+                {{ hero_subtitle }}
+            </p>
+            <div class="mt-10 flex flex-wrap justify-center gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-extrabold text-cyan-400">5+</div>
+                    <div class="text-sm text-blue-200 mt-1">{{ stat_exp }}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-extrabold text-cyan-400">20+</div>
+                    <div class="text-sm text-blue-200 mt-1">{{ stat_labs }}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-extrabold text-cyan-400">50+</div>
+                    <div class="text-sm text-blue-200 mt-1">{{ stat_articles }}</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-extrabold text-cyan-400">1K+</div>
+                    <div class="text-sm text-blue-200 mt-1">{{ stat_students }}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
+</section>
+
+<!-- Founder + Story -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="grid grid-cols-1 lg:grid-cols-3 gap-12 items-start">
+        <!-- Founder Card -->
+        <div class="lg:sticky lg:top-24">
+            <div class="bg-white rounded-2xl shadow-xl border border-slate-100 p-8 text-center">
+                <div class="w-32 h-32 mx-auto rounded-full bg-gradient-to-br from-blue-600 to-purple-700 flex items-center justify-center text-white text-5xl font-bold shadow-lg ring-4 ring-white">
+                    TR
+                </div>
+                <h2 class="mt-6 text-2xl font-bold text-slate-900">{{ founder_name }}</h2>
+                <p class="text-blue-600 font-semibold">{{ founder_role }}</p>
+                <p class="mt-1 text-sm text-slate-500">{% trans "CCMC | IT Professional" %}</p>
+                <div class="mt-4 flex justify-center gap-2">
+                    <span class="px-3 py-1 bg-blue-50 text-blue-700 text-xs font-semibold rounded-full">{% trans "Cloud Security" %}</span>
+                    <span class="px-3 py-1 bg-purple-50 text-purple-700 text-xs font-semibold rounded-full">{% trans "DevSecOps" %}</span>
+                </div>
+                <div class="mt-6 flex justify-center gap-3">
+                    <a href="https://github.com/russel-taptue" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 bg-slate-900 text-white rounded-xl hover:bg-slate-700 transition" aria-label="GitHub">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                    </a>
+                    <a href="https://linkedin.com/in/taptue-russel-1a39b2339/" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 bg-blue-600 text-white rounded-xl hover:bg-blue-500 transition" aria-label="LinkedIn">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+                    </a>
+                    <a href="https://www.youtube.com/@CyberWithTaptue" target="_blank" rel="noopener noreferrer" class="inline-flex items-center justify-center w-10 h-10 bg-red-600 text-white rounded-xl hover:bg-red-500 transition" aria-label="YouTube">
+                        <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Story Content -->
+        <div class="lg:col-span-2">
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-p:text-slate-600 prose-p:leading-relaxed prose-li:text-slate-600">
+                <h2 class="text-3xl font-bold text-slate-900">{{ story_title }}</h2>
+                <p class="lead text-lg text-slate-500">
+                    {% trans "Cyber With Taptue was founded by Taptue Russel, a seasoned IT professional and cybersecurity consultant with a passion for education and open-source technology." %}
+                </p>
+                <p>
+                    {% trans "With years of hands-on experience in security operations, digital forensics, cloud security, and DevSecOps, Russel recognized a critical gap in the cybersecurity training landscape." %}
+                </p>
+                <p>
+                    {% trans "Most cybersecurity resources are either too theoretical to be useful in real-world scenarios or locked behind expensive paywalls. Cyber With Taptue bridges this gap by providing practical, hands-on labs and projects that are completely free and open-source." %}
+                </p>
+
+                <div class="not-prose my-10 bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 border border-blue-100">
+                    <h3 class="text-xl font-bold text-slate-900 flex items-center gap-2">
+                        <svg class="w-6 h-6 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+                        {{ mission_title }}
+                    </h3>
+                    <ul class="mt-4 space-y-3">
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700">{% trans "Provide high-quality, practical cybersecurity education at zero cost." %}</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700">{% trans "Build a community of security professionals who learn, share, and grow together." %}</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700">{% trans "Promote open-source tools and methodologies for enterprise security." %}</span>
+                        </li>
+                        <li class="flex items-start gap-3">
+                            <svg class="w-5 h-5 text-green-500 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"/></svg>
+                            <span class="text-slate-700">{% trans "Bridge the gap between academic cybersecurity and real-world practice." %}</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <h3 class="text-2xl font-bold text-slate-900">{{ values_title }}</h3>
+                <div class="not-prose grid grid-cols-1 sm:grid-cols-2 gap-4 mt-6">
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-blue-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                        </div>
+                        <h4 class="mt-3 font-semibold text-slate-900">{% trans "Hands-On Learning" %}</h4>
+                        <p class="mt-1 text-sm text-slate-600">{% trans "Real environments, real tools, real skills." %}</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-purple-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                        </div>
+                        <h4 class="mt-3 font-semibold text-slate-900">{% trans "Open Source" %}</h4>
+                        <p class="mt-1 text-sm text-slate-600">{% trans "Free and transparent, always." %}</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-green-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                        </div>
+                        <h4 class="mt-3 font-semibold text-slate-900">{% trans "Bilingual" %}</h4>
+                        <p class="mt-1 text-sm text-slate-600">{% trans "EN & FR — learning without borders." %}</p>
+                    </div>
+                    <div class="bg-white rounded-xl border border-slate-200 p-5 hover:shadow-md transition-shadow">
+                        <div class="w-10 h-10 bg-orange-100 rounded-lg flex items-center justify-center">
+                            <svg class="w-5 h-5 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/></svg>
+                        </div>
+                        <h4 class="mt-3 font-semibold text-slate-900">{% trans "Community" %}</h4>
+                        <p class="mt-1 text-sm text-slate-600">{% trans "Learn together, grow together." %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- What We Offer -->
+<section class="bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl font-bold text-slate-900">{% trans "What We Offer" %}</h2>
+            <p class="mt-3 text-lg text-slate-600 max-w-2xl mx-auto">{% trans "Everything you need to level up your cybersecurity skills, completely free." %}</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-14 h-14 mx-auto bg-gradient-to-br from-blue-500 to-blue-600 rounded-2xl flex items-center justify-center shadow-lg shadow-blue-500/20">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z"/></svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-slate-900">{% trans "Hands-On Labs" %}</h3>
+                <p class="mt-2 text-sm text-slate-600">{% trans "Step-by-step guides for building SIEM labs, forensic investigations, and production-grade configurations." %}</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-14 h-14 mx-auto bg-gradient-to-br from-purple-500 to-purple-600 rounded-2xl flex items-center justify-center shadow-lg shadow-purple-500/20">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-slate-900">{% trans "Project Labs" %}</h3>
+                <p class="mt-2 text-sm text-slate-600">{% trans "Real-world projects with production-grade configurations, all available on GitHub." %}</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-14 h-14 mx-auto bg-gradient-to-br from-green-500 to-green-600 rounded-2xl flex items-center justify-center shadow-lg shadow-green-500/20">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-slate-900">{% trans "Bilingual Content" %}</h3>
+                <p class="mt-2 text-sm text-slate-600">{% trans "All articles and labs available in both English and French." %}</p>
+            </div>
+            <div class="bg-white rounded-2xl p-6 text-center shadow-sm border border-slate-200 hover:shadow-lg hover:-translate-y-1 transition-all duration-300">
+                <div class="w-14 h-14 mx-auto bg-gradient-to-br from-orange-500 to-orange-600 rounded-2xl flex items-center justify-center shadow-lg shadow-orange-500/20">
+                    <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197m13.5-9a2.5 2.5 0 11-5 0 2.5 2.5 0 015 0z"/></svg>
+                </div>
+                <h3 class="mt-4 text-lg font-semibold text-slate-900">{% trans "Community-Driven" %}</h3>
+                <p class="mt-2 text-sm text-slate-600">{% trans "Open-source content that anyone can contribute to and improve." %}</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Technologies -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20">
+    <div class="text-center mb-12">
+        <h2 class="text-3xl font-bold text-slate-900">{% trans "Technologies We Work With" %}</h2>
+        <p class="mt-3 text-lg text-slate-600">{% trans "Modern tools and platforms we use in our labs and projects." %}</p>
+    </div>
+    <div class="flex flex-wrap justify-center gap-4">
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Linux</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Docker</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Nginx</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">PostgreSQL</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Django</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Python</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Wireshark</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Kali Linux</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">AWS</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">ELK Stack</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">HTMX</span>
+        <span class="px-5 py-2.5 bg-slate-100 text-slate-700 rounded-xl text-sm font-semibold hover:bg-slate-200 transition-colors">Tailwind CSS</span>
+    </div>
+</section>
+
+<!-- CTA -->
+<section class="relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-r from-blue-600 to-purple-700"></div>
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+    <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 text-center text-white">
+        <h2 class="text-3xl sm:text-4xl font-extrabold">{{ cta_title }}</h2>
+        <p class="mt-4 text-lg text-blue-100 max-w-2xl mx-auto">
+            {{ cta_subtitle }}
+        </p>
+        <div class="mt-10 flex flex-wrap justify-center gap-4">
+            <a href="/{{ LANGUAGE_CODE }}/blog/" class="inline-flex items-center px-8 py-3.5 bg-white text-blue-700 font-semibold rounded-xl hover:bg-blue-50 transition-all shadow-lg">
+                {{ cta_blog }}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+            <a href="/{{ LANGUAGE_CODE }}/projects/" class="inline-flex items-center px-8 py-3.5 bg-blue-500 text-white font-semibold rounded-xl hover:bg-blue-400 transition-all border border-blue-400 shadow-lg">
+                {{ cta_projects }}
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+            </a>
+        </div>
+    </div>
+</section>
+{% endblock content %}

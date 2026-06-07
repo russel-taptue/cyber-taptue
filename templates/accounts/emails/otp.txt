@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}
+{% trans "Your Login Verification Code" %}
+
+{% blocktrans %}Hi {{ username }},{% endblocktrans %}
+
+{% trans "Enter the following code to complete your login:" %}
+
+{{ otp_code }}
+
+{% trans "This code expires in 10 minutes. If you didn't request this login, please ignore this email." %}
+
+© Cyber With Taptue
+{% endautoescape %}

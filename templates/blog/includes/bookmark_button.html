@@ -1,0 +1,21 @@
+{% load i18n %}
+{% if user.is_authenticated %}
+<form method="post" action="{% url 'blog:toggle_bookmark' slug=article.slug %}"
+      hx-post="{% url 'blog:toggle_bookmark' slug=article.slug %}"
+      hx-target="this"
+      hx-swap="outerHTML"
+      class="inline">
+    {% csrf_token %}
+    <button type="submit" class="inline-flex items-center gap-2 px-4 py-2 rounded-lg border text-sm font-semibold transition-colors
+        {% if bookmarked %}
+            bg-cyber-50 border-cyber-300 text-cyber-700 hover:bg-cyber-100
+        {% else %}
+            border-slate-300 text-slate-600 hover:bg-slate-50
+        {% endif %}">
+        <svg class="w-4 h-4 {% if bookmarked %}fill-cyber-500{% else %}fill-none stroke-current{% endif %}" viewBox="0 0 24 24" stroke-width="2">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5 5a2 2 0 012-2h10a2 2 0 012 2v16l-7-3.5L5 21V5z"/>
+        </svg>
+        {% if bookmarked %}{% trans "Bookmarked" %}{% else %}{% trans "Bookmark" %}{% endif %}
+    </button>
+</form>
+{% endif %}

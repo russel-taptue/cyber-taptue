@@ -1,0 +1,59 @@
+{% load i18n %}
+<div id="comments-section">
+    {% if comments %}
+    <div class="space-y-5">
+        {% for comment in comments %}
+        <div class="bg-white rounded-xl border border-slate-100 p-5" id="comment-{{ comment.pk }}">
+            <div class="flex items-center gap-3 mb-3">
+                <div class="w-9 h-9 rounded-full bg-brand-100 flex items-center justify-center text-brand-700 font-bold text-sm">
+                    {{ comment.author.username|first|upper }}
+                </div>
+                <div>
+                    <p class="text-sm font-semibold text-slate-900">{{ comment.author.username }}</p>
+                    <p class="text-xs text-slate-400">{{ comment.created_at|date:"M d, Y \a\t H:i" }}</p>
+                </div>
+            </div>
+            <p class="text-sm text-slate-700 leading-relaxed">{{ comment.content }}</p>
+            {% if user.is_authenticated %}
+            <button class="mt-3 text-xs font-medium text-cyber-600 hover:text-cyber-500 transition-colors"
+                    hx-get="{% url 'blog:reply_form' slug=article.slug parent_id=comment.pk %}"
+                    hx-target="#reply-form-{{ comment.pk }}"
+                    hx-swap="innerHTML">
+                {% trans "Reply" %}
+            </button>
+            {% endif %}
+            <div id="reply-form-{{ comment.pk }}" class="mt-3"></div>
+            {% with replies=comment.replies.all %}
+            {% if replies %}
+            <div class="mt-4 ml-8 space-y-4 border-l-2 border-slate-100 pl-4">
+                {% for reply in replies %}
+                <div id="comment-{{ reply.pk }}">
+                    <div class="flex items-center gap-3 mb-2">
+                        <div class="w-7 h-7 rounded-full bg-brand-50 flex items-center justify-center text-brand-600 font-bold text-xs">
+                            {{ reply.author.username|first|upper }}
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-slate-900">{{ reply.author.username }}</p>
+                            <p class="text-xs text-slate-400">{{ reply.created_at|date:"M d, Y \a\t H:i" }}</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-700 leading-relaxed">{{ reply.content }}</p>
+                </div>
+                {% endfor %}
+            </div>
+            {% endif %}
+            {% endwith %}
+        </div>
+        {% endfor %}
+    </div>
+    {% else %}
+    <div class="text-center py-12">
+        <div class="w-12 h-12 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-3">
+            <svg class="w-6 h-6 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/>
+            </svg>
+        </div>
+        <p class="text-sm text-slate-500">{% trans "No comments yet. Be the first to share your thoughts!" %}</p>
+    </div>
+    {% endif %}
+</div>

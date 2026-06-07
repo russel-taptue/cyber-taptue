@@ -1,0 +1,28 @@
+{% load i18n %}
+<form method="post"
+      action="{% url 'blog:article_comment' slug=article.slug %}"
+      hx-post="{% url 'blog:article_comment' slug=article.slug %}"
+      hx-target="#comments-section"
+      hx-swap="outerHTML"
+      class="flex items-start gap-2 reply-form">
+    {% csrf_token %}
+    {{ form.parent }}
+    <textarea name="content" rows="2"
+              placeholder="{% trans 'Write a reply...' %}"
+              class="flex-1 rounded-lg border border-slate-300 px-3 py-2 text-xs focus:ring-2 focus:ring-cyber-500/30 focus:border-cyber-500 outline-none transition-colors resize-none"
+              required></textarea>
+    <div class="flex gap-1 shrink-0">
+        <button type="submit"
+                class="px-3 py-2 text-xs font-medium text-white bg-cyber-600 hover:bg-cyber-500 rounded-lg transition-colors">
+            {% trans "Reply" %}
+        </button>
+        <button type="button"
+                class="px-3 py-2 text-xs font-medium text-slate-500 hover:text-slate-700 bg-slate-100 hover:bg-slate-200 rounded-lg transition-colors"
+                hx-get="/nonexistent"
+                hx-target="#reply-form-{{ parent.pk }}"
+                hx-swap="innerHTML"
+                onclick="this.closest('.reply-form').parentElement.innerHTML = ''">
+            {% trans "Cancel" %}
+        </button>
+    </div>
+</form>

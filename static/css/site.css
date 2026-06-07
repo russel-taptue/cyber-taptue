@@ -1,0 +1,42 @@
+body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.nav-link {
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: all 0.15s ease;
+}
+
+.nav-link:hover {
+    color: #ffffff;
+    background-color: #1e293b;
+}
+
+.nav-link.active {
+    color: #22d3ee;
+    background-color: rgba(30, 41, 59, 0.5);
+}
+
+.mobile-nav-link {
+    display: block;
+    padding: 0.5rem 0.75rem;
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: #cbd5e1;
+    transition: all 0.15s ease;
+}
+
+.mobile-nav-link:hover {
+    color: #ffffff;
+    background-color: #1e293b;
+}
+
+.mobile-nav-link.active {
+    color: #22d3ee;
+    background-color: rgba(30, 41, 59, 0.5);
+}

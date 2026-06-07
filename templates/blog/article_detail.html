@@ -1,0 +1,262 @@
+{% extends "base.html" %}
+{% load i18n static %}
+{% load markdown_extras %}
+
+{% block title %}{{ article|translated_field:"title" }} — Cyber With Taptue{% endblock title %}
+{% block meta_description %}{{ article|translated_field:"excerpt"|default:article.content|truncatechars:160 }}{% endblock meta_description %}
+{% block og_title %}{{ article|translated_field:"title" }} — Cyber With Taptue{% endblock og_title %}
+{% block og_description %}{{ article|translated_field:"excerpt"|default:article.content|truncatechars:200 }}{% endblock og_description %}
+{% block og_type %}article{% endblock og_type %}
+{% block og_image %}{% if article.featured_image %}{{ request.build_absolute_uri|cut:request.path }}{{ article.featured_image.url }}{% else %}{{ block.super }}{% endif %}{% endblock og_image %}
+
+{% block content %}
+
+<!-- Reading Progress Bar -->
+<div id="reading-progress" class="fixed top-0 left-0 w-full h-1 bg-slate-200 z-50">
+    <div id="reading-progress-bar" class="h-full bg-gradient-to-r from-cyber-500 to-blue-500 transition-all duration-150" style="width:0%"></div>
+</div>
+
+<!-- Article Header -->
+<section class="relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-purple-900">
+    <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDM0djItSDI0di0yaDEyek0zNiAyNHYySDI0di0yaDEyeiIvPjwvZz48L2c+PC9zdmc+')]"></div>
+    <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16 lg:py-24">
+        <a href="{% url 'blog:article_list' %}" class="inline-flex items-center gap-2 text-sm font-medium text-blue-200 hover:text-white transition-colors mb-8">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"/></svg>
+            {% trans "Back to Blog" %}
+        </a>
+        <div class="flex flex-wrap items-center gap-3 mb-4">
+            {% if article.category %}
+            <span class="inline-block px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-sm text-cyan-300 text-sm font-semibold border border-white/10">
+                {{ article.category.name }}
+            </span>
+            {% endif %}
+            <span class="text-sm text-blue-300">{{ article.reading_time }} {% trans "min read" %}</span>
+        </div>
+        <h1 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-white leading-tight">
+            {{ article|translated_field:"title" }}
+        </h1>
+        {% if article|translated_field:"excerpt" %}
+        <p class="mt-4 text-lg text-blue-200 leading-relaxed">
+            {{ article|translated_field:"excerpt" }}
+        </p>
+        {% endif %}
+        <div class="mt-8 flex flex-wrap items-center gap-4 text-sm">
+            {% if article.author %}
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-full bg-white/10 flex items-center justify-center text-white font-bold text-sm ring-2 ring-white/20">
+                    {{ article.author.username|first|upper }}
+                </div>
+                <div>
+                    <span class="block text-white font-semibold">{{ article.author.username }}</span>
+                    <span class="text-blue-300 text-xs">{% trans "Author" %}</span>
+                </div>
+            </div>
+            {% endif %}
+            <span class="text-blue-300 hidden sm:block">&middot;</span>
+            <time datetime="{{ article.published_at|date:'c' }}" class="text-blue-300">{{ article.published_at|date:"F d, Y" }}</time>
+            <span class="flex-1"></span>
+            <div class="flex items-center">
+                {% include "blog/includes/bookmark_button.html" %}
+            </div>
+        </div>
+    </div>
+    <div class="absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-white to-transparent"></div>
+</section>
+
+<!-- Article Content -->
+<section class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
+    <div class="grid grid-cols-1 lg:grid-cols-4 gap-12">
+        <!-- Sidebar: TOC & Share -->
+        <aside class="lg:col-span-1 order-2 lg:order-1">
+            <div class="lg:sticky lg:top-24 space-y-8">
+                <!-- Share -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                    <h3 class="text-sm font-bold text-slate-900 mb-4">{% trans "Share this article" %}</h3>
+                    {% include "blog/includes/share_buttons.html" %}
+                </div>
+
+                <!-- Category -->
+                {% if article.category %}
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                    <h3 class="text-sm font-bold text-slate-900 mb-3">{% trans "Category" %}</h3>
+                    <a href="{% url 'blog:article_list' %}?domain={{ article.category.slug }}" class="inline-flex items-center gap-2 px-4 py-2 bg-cyber-50 text-cyber-700 rounded-xl text-sm font-semibold hover:bg-cyber-100 transition-colors">
+                        {{ article.category.name }}
+                    </a>
+                </div>
+                {% endif %}
+
+                <!-- Tags -->
+                <div class="bg-white rounded-2xl border border-slate-200 p-5">
+                    <h3 class="text-sm font-bold text-slate-900 mb-3">{% trans "Author" %}</h3>
+                    <div class="flex items-center gap-3">
+                        <div class="w-12 h-12 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center text-white font-bold text-lg">
+                            {{ article.author.username|first|upper }}
+                        </div>
+                        <div>
+                            <p class="font-semibold text-slate-900 text-sm">{{ article.author.username }}</p>
+                            <p class="text-xs text-slate-500">{% trans "Cybersecurity Professional" %}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </aside>
+
+        <!-- Main Content -->
+        <div class="lg:col-span-3 order-1 lg:order-2">
+            {% if article.featured_image %}
+            <div class="mb-10 rounded-2xl overflow-hidden shadow-xl">
+                <img src="{{ article.featured_image.url }}" alt="{{ article|translated_field:'title' }}" class="w-full h-auto">
+            </div>
+            {% endif %}
+
+            <div class="prose prose-slate max-w-none prose-headings:font-bold prose-headings:text-slate-900 prose-headings:scroll-mt-24 prose-p:text-slate-600 prose-p:leading-relaxed prose-a:text-cyber-600 prose-a:no-underline hover:prose-a:underline prose-code:bg-slate-100 prose-code:px-1.5 prose-code:py-0.5 prose-code:rounded-lg prose-code:text-sm prose-code:font-normal prose-pre:bg-slate-900 prose-pre:text-slate-100 prose-pre:rounded-2xl prose-pre:shadow-xl prose-img:rounded-2xl prose-img:shadow-lg prose-li:text-slate-600 prose-blockquote:border-cyber-500 prose-blockquote:bg-cyber-50 prose-blockquote:rounded-xl prose-blockquote:py-2 prose-blockquote:px-6">
+                {{ article|translated_field:"content"|render_markdown }}
+            </div>
+
+            <!-- Bottom Share -->
+            <div class="mt-12 pt-8 border-t border-slate-200">
+                <div class="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+                    <p class="text-sm font-semibold text-slate-700">{% trans "Was this article helpful? Share it!" %}</p>
+                    {% include "blog/includes/share_buttons.html" %}
+                </div>
+            </div>
+
+            <!-- YouTube Video -->
+            {% if article.youtube_video_id %}
+            <div class="mt-12">
+                <h2 class="text-2xl font-bold text-slate-900 mb-6 flex items-center gap-2">
+                    <svg class="w-6 h-6 text-red-500" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+                    {% trans "Watch the Tutorial" %}
+                </h2>
+                <div class="aspect-video rounded-2xl overflow-hidden bg-slate-900 shadow-xl">
+                    <iframe
+                        src="https://www.youtube.com/embed/{{ article.youtube_video_id }}"
+                        title="{{ article|translated_field:'title' }}"
+                        class="w-full h-full"
+                        frameborder="0"
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                        allowfullscreen
+                    ></iframe>
+                </div>
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</section>
+
+<!-- Related Articles -->
+{% if related_articles %}
+<section class="bg-slate-50 border-t border-slate-200">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+        <div class="flex items-center justify-between mb-10">
+            <div>
+                <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">{% trans "Related Articles" %}</h2>
+                <p class="mt-2 text-slate-600">{% trans "Continue learning with these recommended reads." %}</p>
+            </div>
+            <a href="{% url 'blog:article_list' %}" class="hidden sm:inline-flex items-center gap-2 text-sm font-semibold text-cyber-600 hover:text-cyber-500 transition-colors">
+                {% trans "View all" %}
+                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+            </a>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {% for related in related_articles %}
+            <a href="{% url 'blog:article_detail' slug=related.slug %}" class="group block bg-white rounded-2xl border border-slate-200 p-6 hover:shadow-xl hover:-translate-y-1 hover:border-cyber-200 transition-all duration-300">
+                <div class="flex items-center gap-2 text-xs text-slate-400 mb-3">
+                    {% if related.category %}
+                    <span class="text-cyber-600 font-semibold">{{ related.category.name }}</span>
+                    <span>&middot;</span>
+                    {% endif %}
+                    <span>{{ related.reading_time }} {% trans "min read" %}</span>
+                </div>
+                <h3 class="font-bold text-slate-900 group-hover:text-cyber-600 transition-colors">
+                    {{ related|translated_field:"title" }}
+                </h3>
+                {% if related|translated_field:"excerpt" %}
+                <p class="mt-2 text-sm text-slate-600 line-clamp-2">{{ related|translated_field:"excerpt" }}</p>
+                {% endif %}
+                <div class="mt-4 inline-flex items-center gap-1 text-sm font-semibold text-cyber-600 group-hover:gap-2 transition-all">
+                    {% trans "Read" %}
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+                </div>
+            </a>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- Comments -->
+<section class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-16">
+    <div class="flex items-center justify-between mb-10">
+        <div>
+            <h2 class="text-2xl sm:text-3xl font-bold text-slate-900">{% trans "Discussion" %}</h2>
+            <p class="mt-1 text-slate-600">{{ comments|length }} {% trans "comments" %}</p>
+        </div>
+    </div>
+
+    {% if user.is_authenticated %}
+    <div class="mb-8 bg-white rounded-2xl border border-slate-200 p-6 shadow-sm">
+        <h3 class="text-sm font-bold text-slate-700 mb-4">{% trans "Leave a comment" %}</h3>
+        <form
+            hx-post="{% url 'blog:article_comment' slug=article.slug %}"
+            hx-target="#comments-section"
+            hx-swap="outerHTML"
+            class="space-y-4"
+        >
+            {% csrf_token %}
+            <div>
+                {{ comment_form.content }}
+            </div>
+            <div class="flex justify-end">
+                <button type="submit" class="inline-flex items-center gap-2 px-6 py-3 rounded-xl bg-cyber-500 text-white font-semibold text-sm hover:bg-cyber-400 transition-colors shadow-lg shadow-cyber-500/20">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8"/></svg>
+                    {% trans "Post Comment" %}
+                </button>
+            </div>
+        </form>
+    </div>
+    {% else %}
+    <div class="mb-8 bg-gradient-to-r from-cyber-50 to-blue-50 rounded-2xl border border-cyber-100 p-8 text-center">
+        <div class="w-14 h-14 bg-white rounded-full flex items-center justify-center mx-auto mb-4 shadow-sm">
+            <svg class="w-7 h-7 text-cyber-500" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 12h.01M12 12h.01M16 12h.01M21 12c0 4.418-4.03 8-9 8a9.863 9.863 0 01-4.255-.949L3 20l1.395-3.72C3.512 15.042 3 13.574 3 12c0-4.418 4.03-8 9-8s9 3.582 9 8z"/></svg>
+        </div>
+        <p class="text-sm text-slate-700 font-medium">
+            {% trans "Join the conversation!" %}
+        </p>
+        <p class="text-sm text-slate-500 mt-1">
+            <a href="{% url 'accounts:login' %}?next={{ request.path }}" class="font-semibold text-cyber-600 hover:text-cyber-500 transition-colors">{% trans "Log in" %}</a>
+            {% trans "or" %}
+            <a href="{% url 'accounts:register' %}" class="font-semibold text-cyber-600 hover:text-cyber-500 transition-colors">{% trans "sign up" %}</a>
+            {% trans "to leave a comment." %}
+        </p>
+    </div>
+    {% endif %}
+
+    <div id="comments-section">
+        {% include "blog/includes/comment_list.html" %}
+    </div>
+</section>
+{% endblock content %}
+
+{% block extra_head %}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
+{% endblock extra_head %}
+{% block extra_scripts %}
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
+<script>
+(function() {
+    var bar = document.getElementById('reading-progress-bar');
+    if (!bar) return;
+    function update() {
+        var scrollTop = window.scrollY || document.documentElement.scrollTop;
+        var docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+        var progress = docHeight > 0 ? (scrollTop / docHeight) * 100 : 0;
+        bar.style.width = Math.min(progress, 100) + '%';
+    }
+    window.addEventListener('scroll', update, { passive: true });
+    window.addEventListener('resize', update, { passive: true });
+    update();
+})();
+</script>
+{% endblock extra_scripts %}

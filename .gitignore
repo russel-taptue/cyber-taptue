@@ -1,0 +1,34 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+dist/
+*.sqlite3
+.venv/
+venv/
+
+# Environment
+.env
+
+# Node / Tailwind
+node_modules/
+package-lock.json
+
+# Static build
+static/css/tailwind.css
+!static/css/tailwind.css
+
+# Media
+media/
+
+# Static build output
+staticfiles/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+*.swp

@@ -1,0 +1,13 @@
+{% load i18n %}{% autoescape off %}
+{% trans "Welcome to Cyber With Taptue!" %}
+
+{% blocktrans %}Hi {{ username }},{% endblocktrans %}
+
+{% trans "Your account has been created successfully." %}
+
+{% trans "You can now log in and explore articles, project labs, events, and more. Every time you log in, you'll receive a one-time verification code by email to keep your account secure." %}
+
+{% trans "Log in here:" %} {{ login_url }}
+
+© Cyber With Taptue
+{% endautoescape %}

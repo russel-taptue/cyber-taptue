@@ -1,0 +1,73 @@
+{% load i18n %}
+
+{% if query %}
+    {% if total == 0 %}
+        <div class="text-center py-16">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <svg class="w-8 h-8 text-slate-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                </svg>
+            </div>
+            <p class="text-lg font-medium text-slate-600">{% trans "No results found." %}</p>
+            <p class="text-sm text-slate-400 mt-1">{% trans "Try different keywords or browse the site." %}</p>
+        </div>
+    {% else %}
+        <p class="text-sm text-slate-500 mb-6">
+            {% blocktrans count counter=total %}{{ counter }} result found{% plural %}{{ counter }} results found{% endblocktrans %}
+        </p>
+
+        {% if articles %}
+        <div class="mb-10">
+            <h2 class="text-xl font-bold text-slate-900 mb-4">{% trans "Articles" %}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for article in articles %}
+                <a href="{% url 'blog:article_detail' slug=article.slug %}" class="group block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-lg hover:border-cyber-300 transition-all">
+                    <h3 class="font-semibold text-slate-900 group-hover:text-cyber-600 transition-colors">
+                        {{ article.title }}
+                    </h3>
+                    {% if article.excerpt %}
+                    <p class="text-sm text-slate-600 mt-2 line-clamp-2">{{ article.excerpt }}</p>
+                    {% endif %}
+                    <div class="flex items-center gap-3 mt-3 text-xs text-slate-400">
+                        <span>{{ article.reading_time }} min</span>
+                        {% if article.category %}
+                        <span class="px-2 py-0.5 rounded-full bg-slate-100 text-slate-600">{{ article.category.name }}</span>
+                        {% endif %}
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+
+        {% if projects %}
+        <div>
+            <h2 class="text-xl font-bold text-slate-900 mb-4">{% trans "Projects / Labs" %}</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {% for project in projects %}
+                <a href="{% url 'projects:project_detail' slug=project.slug %}" class="group block bg-white rounded-xl border border-slate-200 p-5 hover:shadow-lg hover:border-cyber-300 transition-all">
+                    <h3 class="font-semibold text-slate-900 group-hover:text-cyber-600 transition-colors">
+                        {{ project.title }}
+                    </h3>
+                    {% if project.summary %}
+                    <p class="text-sm text-slate-600 mt-2 line-clamp-2">{{ project.summary }}</p>
+                    {% endif %}
+                    <div class="flex items-center gap-3 mt-3 text-xs">
+                        <span class="px-2 py-0.5 rounded-full
+                            {% if project.difficulty == 'beginner' %}bg-green-100 text-green-700
+                            {% elif project.difficulty == 'intermediate' %}bg-yellow-100 text-yellow-700
+                            {% else %}bg-red-100 text-red-700{% endif %}">
+                            {{ project.get_difficulty_display }}
+                        </span>
+                    </div>
+                </a>
+                {% endfor %}
+            </div>
+        </div>
+        {% endif %}
+    {% endif %}
+{% else %}
+    <div class="text-center py-16">
+        <p class="text-lg font-medium text-slate-600">{% trans "Enter a search term above." %}</p>
+    </div>
+{% endif %}

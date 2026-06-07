@@ -1,0 +1,22 @@
+{% load i18n %}{% autoescape off %}
+{% trans "Welcome to Cyber With Taptue!" %}
+
+{% trans "Thank you for subscribing to our newsletter." %}
+
+{% trans "You'll now receive updates about:" %}
+- {% trans "New articles and tutorials on cybersecurity" %}
+- {% trans "Hands-on project labs and walkthroughs" %}
+- {% trans "Upcoming events and community gatherings" %}
+- {% trans "Podcast episodes with industry legends" %}
+
+{% trans "All content is available in English and French — free, open-source, and built for the community." %}
+
+{% trans "Visit us" %}: {{ protocol }}://{{ domain }}
+
+---
+
+{% trans "If you didn't subscribe to this newsletter, you can unsubscribe here:" %}
+{{ unsubscribe_url }}
+
+© Cyber With Taptue
+{% endautoescape %}
