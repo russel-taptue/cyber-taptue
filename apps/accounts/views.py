@@ -68,7 +68,6 @@ class CustomLoginView(LoginView):
         otp = OTP.create_and_invalidate_old(user)
         _send_otp_email(user, otp.code, request=self.request)
         self.request.session["_otp_user_id"] = user.pk
-        self.request.session["_otp_code"] = otp.code
         messages.success(
             self.request,
             _("A verification code has been sent to your email."),
@@ -88,8 +87,7 @@ class VerifyOTPView(View):
 
     def get(self, request):
         form = self.form_class()
-        otp_code = request.session.pop("_otp_code", None)
-        return render(request, self.template_name, {"form": form, "otp_code": otp_code})
+        return render(request, self.template_name, {"form": form})
 
     def post(self, request):
         form = self.form_class(request.POST)
@@ -144,7 +142,6 @@ class ResendOTPView(View):
         user = get_object_or_404(CustomUser, pk=user_id)
         otp = OTP.create_and_invalidate_old(user)
         _send_otp_email(user, otp.code, request=request)
-        request.session["_otp_code"] = otp.code
         messages.success(request, _("A new verification code has been sent to your email."))
         return redirect("accounts:verify_otp")
 
