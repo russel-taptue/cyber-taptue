@@ -7,9 +7,11 @@ ALLOWED_HOSTS = env("DJANGO_ALLOWED_HOSTS")
 EMAIL_TIMEOUT = 15
 
 if env("SENDGRID_API_KEY", default=None):
-    EMAIL_BACKEND = "sendgrid_backend.SendgridBackend"
-    SENDGRID_API_KEY = env("SENDGRID_API_KEY")
-    SENDGRID_SANDBOX_MODE_IN_DEBUG = False
+    EMAIL_HOST = "smtp.sendgrid.net"
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = "apikey"
+    EMAIL_HOST_PASSWORD = env("SENDGRID_API_KEY")
+    EMAIL_USE_TLS = True
 
 SECURE_SSL_REDIRECT = True
 SESSION_COOKIE_SECURE = True
