@@ -6,3 +6,4 @@ bleach>=6.2
 whitenoise>=6.0
 django-axes>=6.0
 gunicorn>=23.0.0
+Pillow>=11.0.0
