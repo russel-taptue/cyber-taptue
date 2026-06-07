@@ -15,36 +15,41 @@ from .forms import CustomAuthenticationForm, CustomUserCreationForm, OTPForm, Pr
 from .models import CustomUser, OTP, Profile
 
 
-def _send_otp_email(user, otp_code):
+def _send_email(subject, context, html_template, txt_template, recipient):
     if not settings.EMAIL_HOST_USER:
         return
-    subject = _("Your login verification code")
-    context = {"username": user.username, "otp_code": otp_code}
-    html_message = render_to_string("accounts/emails/otp.html", context)
-    plain_message = render_to_string("accounts/emails/otp.txt", context)
-    send_mail(
-        subject=subject,
-        message=plain_message,
-        html_message=html_message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[user.email],
+    try:
+        html_message = render_to_string(html_template, context)
+        plain_message = render_to_string(txt_template, context)
+        send_mail(
+            subject=subject,
+            message=plain_message,
+            html_message=html_message,
+            from_email=settings.DEFAULT_FROM_EMAIL,
+            recipient_list=[recipient],
+        )
+    except Exception:
+        pass
+
+
+def _send_otp_email(user, otp_code):
+    _send_email(
+        subject=_("Your login verification code"),
+        context={"username": user.username, "otp_code": otp_code},
+        html_template="accounts/emails/otp.html",
+        txt_template="accounts/emails/otp.txt",
+        recipient=user.email,
     )
 
 
 def _send_welcome_email(user):
-    if not settings.EMAIL_HOST_USER:
-        return
-    subject = _("Welcome to Cyber With Taptue!")
     login_url = settings.BASE_URL.rstrip("/") + reverse("accounts:login")
-    context = {"username": user.username, "login_url": login_url}
-    html_message = render_to_string("accounts/emails/welcome.html", context)
-    plain_message = render_to_string("accounts/emails/welcome.txt", context)
-    send_mail(
-        subject=subject,
-        message=plain_message,
-        html_message=html_message,
-        from_email=settings.DEFAULT_FROM_EMAIL,
-        recipient_list=[user.email],
+    _send_email(
+        subject=_("Welcome to Cyber With Taptue!"),
+        context={"username": user.username, "login_url": login_url},
+        html_template="accounts/emails/welcome.html",
+        txt_template="accounts/emails/welcome.txt",
+        recipient=user.email,
     )
 
 
