@@ -20,8 +20,10 @@ logger = logging.getLogger(__name__)
 
 
 def _send_email(subject, context, html_template, txt_template, recipient):
-    if not settings.EMAIL_HOST_USER:
-        logger.warning("EMAIL_HOST_USER not set, skipping email")
+    has_smtp = bool(settings.EMAIL_HOST_USER)
+    has_sendgrid = hasattr(settings, "SENDGRID_API_KEY") and bool(settings.SENDGRID_API_KEY)
+    if not has_smtp and not has_sendgrid:
+        logger.warning("No email backend configured (EMAIL_HOST_USER or SENDGRID_API_KEY), skipping email")
         return
     try:
         html_message = render_to_string(html_template, context)

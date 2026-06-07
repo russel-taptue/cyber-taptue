@@ -41,7 +41,9 @@ class ContactView(TemplateView):
         return self.get(request, *args, **kwargs)
 
     def _send_welcome_email(self, subscriber):
-        if not settings.EMAIL_HOST_USER:
+        has_smtp = bool(settings.EMAIL_HOST_USER)
+        has_sendgrid = hasattr(settings, "SENDGRID_API_KEY") and bool(settings.SENDGRID_API_KEY)
+        if not has_smtp and not has_sendgrid:
             return
         unsubscribe_url = f"{settings.BASE_URL}/contact/unsubscribe/{subscriber.id}/"
         html_message = render_to_string("contact/emails/welcome.html", {
